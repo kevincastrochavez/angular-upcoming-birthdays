@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "upcoming-birthdays"
+  "cli": {
+    "analytics": false
+  }
 }
