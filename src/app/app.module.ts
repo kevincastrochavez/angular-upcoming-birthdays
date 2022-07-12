@@ -16,6 +16,7 @@ import { BodyComponent } from './components/body/body.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthService } from './shared/services/auth.service';
+import { DetailsCardComponent } from './components/details-card/details-card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthService } from './shared/services/auth.service';
     BodyComponent,
     LoginComponent,
     DashboardComponent,
+    DetailsCardComponent,
   ],
   imports: [
     BrowserModule,
