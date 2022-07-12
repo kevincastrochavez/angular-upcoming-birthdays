@@ -1,5 +1,4 @@
-#details-card {
-  height: 220px;
+.card-small-container {
   box-shadow: 0px 13px 31px rgba(12, 20, 33, 0.04),
     0px 9.45547px 20.8947px rgba(12, 20, 33, 0.032375),
     0px 6.58125px 13.5141px rgba(12, 20, 33, 0.027),
@@ -9,12 +8,23 @@
     0px 0.56875px 1.79219px rgba(12, 20, 33, 0.013), inset 0px 2px 1px #ffffff;
 
   display: grid;
-  grid-template-columns: 6.38vw 20.55vw 8.33vw 20.55vw 24.16vw 6.38vw;
-  grid-template-rows: 20px 46px 25px 31px 25px 53px 20px;
+  grid-template-columns: 11px 30px 17px 43px 11px;
+  grid-template-rows: 10px 30px 13px 17px 10px;
+  margin-top: 15px;
 }
 
-#details-img {
-  margin-top: -10.27vw;
+.card-small-container h2 {
+  font-size: 10px;
+  line-height: 1;
+}
+
+.card-small-container p {
+  font-size: 8px;
+  line-height: 1;
+}
+
+#details-small-img {
+  margin-top: -15px;
 }
 
 .day-count {
@@ -22,6 +32,13 @@
 }
 
 .ideas-info {
-  font-size: 10px;
+  font-size: 8px;
   color: #f4bfbf;
+
+  display: grid;
+}
+
+.ideas-info fa-icon {
+  height: 8px;
+  display: flex;
 }
