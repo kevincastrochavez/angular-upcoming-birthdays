@@ -23,6 +23,7 @@ import { DetailsComponent } from './components/details/details.component';
 import { AllComponent } from './components/all/all.component';
 import { DetailsCardListComponent } from './components/details-card-list/details-card-list.component';
 import { AddFriendComponent } from './components/add-friend/add-friend.component';
+import { EditFriendComponent } from './components/edit-friend/edit-friend.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddFriendComponent } from './components/add-friend/add-friend.component
     AllComponent,
     DetailsCardListComponent,
     AddFriendComponent,
+    EditFriendComponent,
   ],
   imports: [
     BrowserModule,
