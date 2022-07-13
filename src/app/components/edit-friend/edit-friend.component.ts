@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faPen } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-edit-friend',
@@ -8,8 +8,21 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 })
 export class EditFriendComponent implements OnInit {
   faChevronLeft = faChevronLeft;
+  faPen = faPen;
+  friend = {
+    fullName: 'Kevin',
+    birthdate: '2022-07-08',
+    imgUrl: 'pic.jpg',
+    favSnack: 'Chips',
+    giftIdea: 'Jeans',
+    dreamDay: 'This is a description',
+  };
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSubmit() {
+    console.log('Hi');
+  }
 }

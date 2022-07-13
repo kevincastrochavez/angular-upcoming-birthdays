@@ -21,6 +21,7 @@ h5 {
 
 p,
 button,
-span {
+span,
+a {
   font-family: "Source Sans Pro", sans-serif;
 }

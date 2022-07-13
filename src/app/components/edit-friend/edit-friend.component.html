@@ -4,4 +4,86 @@
   >
 
   <h1 class="mt-11 mb-5 text-2xl px-6">Edit a Friend</h1>
+
+  <form (ngSubmit)="onSubmit()" #f="ngForm" class="mx-6">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input
+        [ngModel]="friend?.fullName"
+        name="fullName"
+        type="text"
+        id="fullName"
+        class="form-control"
+        required
+      />
+    </div>
+
+    <div class="input-container">
+      <div class="form-group">
+        <label for="birthdate">Birthdate</label>
+        <input
+          [ngModel]="friend?.birthdate"
+          name="birthdate"
+          type="date"
+          id="birthdate"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="imgUrl">Image Path</label>
+        <input
+          [ngModel]="friend?.imgUrl"
+          name="imgUrl"
+          type="text"
+          id="imgUrl"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="input-container">
+      <div class="form-group">
+        <label for="favSnack">Favorite Snack</label>
+        <input
+          [ngModel]="friend?.favSnack"
+          name="favSnack"
+          type="text"
+          id="favSnack"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="giftIdea">Gift Idea</label>
+        <input
+          [ngModel]="friend?.giftIdea"
+          name="giftIdea"
+          type="text"
+          id="giftIdea"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="dreamDay">Dream Day</label>
+      <textarea
+        [ngModel]="friend?.dreamDay"
+        rows="6"
+        name="dreamDay"
+        type="text"
+        id="dreamDay"
+        class="form-control"
+        required
+      ></textarea>
+    </div>
+    <button type="submit">
+      <fa-icon [icon]="faPen" size="1x" class="mr-2"></fa-icon>Edit
+    </button>
+  </form>
 </div>
