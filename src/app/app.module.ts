@@ -19,6 +19,8 @@ import { AuthService } from './shared/services/auth.service';
 import { DetailsCardComponent } from './components/details-card/details-card.component';
 import { DetailsCardSmallComponent } from './components/details-card-small/details-card-small.component';
 import { DetailsComponent } from './components/details/details.component';
+import { AllComponent } from './components/all/all.component';
+import { DetailsCardListComponent } from './components/details-card-list/details-card-list.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { DetailsComponent } from './components/details/details.component';
     DetailsCardComponent,
     DetailsCardSmallComponent,
     DetailsComponent,
+    AllComponent,
+    DetailsCardListComponent,
   ],
   imports: [
     BrowserModule,
