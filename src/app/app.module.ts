@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthService } from './shared/services/auth.service';
 import { DetailsCardComponent } from './components/details-card/details-card.component';
 import { DetailsCardSmallComponent } from './components/details-card-small/details-card-small.component';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { DetailsCardSmallComponent } from './components/details-card-small/detai
     DashboardComponent,
     DetailsCardComponent,
     DetailsCardSmallComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,
