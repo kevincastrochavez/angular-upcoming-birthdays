@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddFriendComponent } from './components/add-friend/add-friend.component';
 import { AllComponent } from './components/all/all.component';
 
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'all',
     component: AllComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'addFriend',
+    component: AddFriendComponent,
     canActivate: [AuthGuard],
   },
 ];

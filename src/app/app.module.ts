@@ -6,6 +6,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { FormsModule } from '@angular/forms';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { DetailsCardSmallComponent } from './components/details-card-small/detai
 import { DetailsComponent } from './components/details/details.component';
 import { AllComponent } from './components/all/all.component';
 import { DetailsCardListComponent } from './components/details-card-list/details-card-list.component';
+import { AddFriendComponent } from './components/add-friend/add-friend.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { DetailsCardListComponent } from './components/details-card-list/details
     DetailsComponent,
     AllComponent,
     DetailsCardListComponent,
+    AddFriendComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +48,7 @@ import { DetailsCardListComponent } from './components/details-card-list/details
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    FormsModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
