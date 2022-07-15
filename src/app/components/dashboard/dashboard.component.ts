@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
     this.friendsService.getFriends().subscribe(
       (friends: Friend[]) => {
         this.friends = friends;
-        console.log(this.friends);
 
         this.nearestFriend = this.friends.find(
           (friend) => Number(friend.birthdate) >= this.todaysDate
@@ -33,10 +32,6 @@ export class DashboardComponent implements OnInit {
             }
           }
         });
-
-        console.log(this.nearestFriend);
-
-        console.log(this.next5Friends);
       },
       (error: any) => {
         console.log(error);

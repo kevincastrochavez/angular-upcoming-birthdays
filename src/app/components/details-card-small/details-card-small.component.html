@@ -14,18 +14,18 @@
   </h2>
 
   <p class="col-start-2 col-end-3 row-start-2 row-end-3 self-end font-bold">
-    Kevin Castro
+    {{ friend.fullName }}
   </p>
 
   <div class="row-start-4 row-end-5 col-start-2 col-end-4 ideas-info">
     <fa-icon [icon]="faGift" size="1x"></fa-icon>
 
-    <p class="text-sm">New Jeans</p>
+    <p class="text-sm">{{ friend.giftIdea }}</p>
   </div>
 
   <div class="row-start-4 row-end-5 col-start-4 col-end-5 ideas-info">
     <fa-icon [icon]="faCookieBite" size="1x"></fa-icon>
 
-    <p class="text-sm">Chips</p>
+    <p class="text-sm">{{ friend.favSnack }}</p>
   </div>
 </a>

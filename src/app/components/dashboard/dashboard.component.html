@@ -6,9 +6,9 @@
   <app-details-card></app-details-card>
   <span class="text-xs self-end mt-10 mb-2 px-6">Next 5 birthdays</span>
   <div class="flex gap-4 overflow-scroll px-6">
-    <app-details-card-small></app-details-card-small>
-    <app-details-card-small></app-details-card-small>
-    <app-details-card-small></app-details-card-small>
-    <app-details-card-small></app-details-card-small>
+    <app-details-card-small
+      *ngFor="let friend of next5Friends"
+      [friend]="friend"
+    ></app-details-card-small>
   </div>
 </div>
