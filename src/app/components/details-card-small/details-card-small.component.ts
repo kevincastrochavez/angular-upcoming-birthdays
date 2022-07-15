@@ -9,6 +9,9 @@ import { Friend } from 'src/app/shared/models/friend.model';
 })
 export class DetailsCardSmallComponent implements OnInit {
   @Input() friend: Friend;
+  currentDay = new Date().getTime();
+  birthdateDay: number;
+  countDown: number;
 
   faGift = faGift;
   faCookieBite = faCookieBite;
@@ -16,6 +19,14 @@ export class DetailsCardSmallComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.friend);
+    this.birthdateDay = Number(this.friend.birthdate);
+    this.countDown = Math.ceil(
+      (this.birthdateDay - this.currentDay) / 1000 / 3600 / 24
+    );
+
+    console.log(this.currentDay);
+    console.log(this.birthdateDay);
+    console.log(this.countDown);
+    console.log('');
   }
 }
