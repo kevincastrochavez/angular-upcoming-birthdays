@@ -24,6 +24,7 @@ import { AllComponent } from './components/all/all.component';
 import { DetailsCardListComponent } from './components/details-card-list/details-card-list.component';
 import { AddFriendComponent } from './components/add-friend/add-friend.component';
 import { EditFriendComponent } from './components/edit-friend/edit-friend.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { EditFriendComponent } from './components/edit-friend/edit-friend.compon
     AngularFireStorageModule,
     AngularFireDatabaseModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent],
