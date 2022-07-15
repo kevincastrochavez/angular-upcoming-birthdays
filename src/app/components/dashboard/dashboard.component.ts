@@ -10,7 +10,9 @@ import { FriendsService } from '../../shared/services/friends.service';
 })
 export class DashboardComponent implements OnInit {
   friends: Friend[] = [];
+  nearestFriend: Friend;
   next5Friends: Friend[] = [];
+  todaysDate: number = new Date().getTime();
 
   constructor(private friendsService: FriendsService) {}
 
@@ -20,8 +22,16 @@ export class DashboardComponent implements OnInit {
         this.friends = friends;
         console.log(this.friends);
 
+        this.nearestFriend = this.friends.find(
+          (friend) => Number(friend.birthdate) >= this.todaysDate
+        );
+
         this.friends.map((friend, index) => {
-          if (index <= 5 && index != 0) {
+          if (
+            index <= 5 &&
+            index != 0 &&
+            Number(friend.birthdate) >= this.todaysDate
+          ) {
             this.next5Friends.push(friend);
           }
         });

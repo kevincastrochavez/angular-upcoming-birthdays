@@ -11,7 +11,7 @@ import { Friend } from 'src/app/shared/models/friend.model';
 })
 export class AddFriendComponent implements OnInit {
   uid = JSON.parse(window.localStorage.getItem('user')).uid;
-  year = new Date().getFullYear();
+  currentYear = new Date().getFullYear();
 
   @ViewChild('f') addFriendForm: NgForm;
   faChevronLeft = faChevronLeft;
@@ -32,10 +32,10 @@ export class AddFriendComponent implements OnInit {
   ngOnInit(): void {
     document
       .getElementById('birthdate')
-      .setAttribute('min', this.year + '-01-01');
+      .setAttribute('min', this.currentYear + '-01-01');
     document
       .getElementById('birthdate')
-      .setAttribute('max', this.year + '-12-31');
+      .setAttribute('max', this.currentYear + '-12-31');
   }
 
   onSubmit() {
