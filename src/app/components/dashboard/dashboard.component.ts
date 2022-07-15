@@ -27,14 +27,14 @@ export class DashboardComponent implements OnInit {
         );
 
         this.friends.map((friend, index) => {
-          if (
-            index <= 5 &&
-            index != 0 &&
-            Number(friend.birthdate) >= this.todaysDate
-          ) {
-            this.next5Friends.push(friend);
+          if (index != 0 && Number(friend.birthdate) >= this.todaysDate) {
+            if (this.next5Friends.length <= 4) {
+              this.next5Friends.push(friend);
+            }
           }
         });
+
+        console.log(this.nearestFriend);
 
         console.log(this.next5Friends);
       },
