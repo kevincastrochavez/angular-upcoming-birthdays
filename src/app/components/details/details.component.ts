@@ -4,6 +4,8 @@ import {
   faPen,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+import { Friend } from 'src/app/shared/models/friend.model';
+import { FriendsService } from 'src/app/shared/services/friends.service';
 
 @Component({
   selector: 'app-details',
@@ -11,11 +13,28 @@ import {
   styleUrls: ['./details.component.css'],
 })
 export class DetailsComponent implements OnInit {
+  currentDay = new Date().getTime();
+  birthdateDay: number;
+  countDown: number;
+  friend: Friend;
+  id: string;
+
   faChevronLeft = faChevronLeft;
   faPen = faPen;
   faTrash = faTrash;
 
-  constructor() {}
+  constructor(private friendsService: FriendsService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.id = window.location.href.split('/')[4];
+
+    this.friendsService.getFriend(this.id).subscribe((friend: Friend) => {
+      this.friend = friend;
+
+      this.birthdateDay = Number(this.friend.birthdate);
+      this.countDown = Math.ceil(
+        (this.birthdateDay - this.currentDay) / 1000 / 3600 / 24
+      );
+    });
+  }
 }

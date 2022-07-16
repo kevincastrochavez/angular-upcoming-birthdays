@@ -1,19 +1,19 @@
 <a routerLink="/details/1" id="details-card" class="w-full bg-white rounded-xl">
   <img
-    src="http://via.placeholder.com/100"
+    [src]="friend.imgUrl"
     alt=""
     class="col-start-2 col-end-3 rounded-full"
     id="details-img"
   />
 
   <h2 class="col-start-4 col-end-6 row-start-2 row-end-3 text-lg leading-6">
-    Birthday coming up in <span class="day-count">20</span> days
+    Birthday coming up in <span class="day-count">{{ countDown }}</span> days
   </h2>
 
   <p
     class="col-start-2 col-end-3 row-start-2 row-end-3 text-xs self-end justify-self-center text-center"
   >
-    Kevin Castro
+    {{ friend.fullName }}
   </p>
 
   <div class="row-start-4 row-end-5 col-start-2 col-end-3">
@@ -22,13 +22,13 @@
       <span class="ml-1">Gift Idea</span>
     </div>
 
-    <p class="text-sm">New Jeans</p>
+    <p class="text-sm">{{ friend.giftIdea }}</p>
   </div>
 
   <div class="row-start-4 row-end-5 col-start-4 col-end-5">
     <div class="ideas-info">
       <fa-icon [icon]="faCookieBite" size="1x"></fa-icon>
-      <span class="ml-1">Fav Snack</span>
+      <span class="ml-1">{{ friend.favSnack }}</span>
     </div>
 
     <p class="text-sm">Chips</p>
@@ -41,8 +41,7 @@
     </div>
 
     <p class="text-sm">
-      This is just a sample text that is filling the space for the birthday
-      card.
+      {{ friend.dreamDay }}
     </p>
   </div>
 </a>

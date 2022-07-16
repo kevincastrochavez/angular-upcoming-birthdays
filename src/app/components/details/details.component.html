@@ -6,7 +6,10 @@
 
   <h1 class="mt-10 mb-14 text-2xl px-6">Friend’s Details</h1>
 
-  <app-details-card></app-details-card>
+  <app-details-card
+    [friend]="friend"
+    [countDown]="countDown"
+  ></app-details-card>
 
   <div class="buttons flex justify-between px-6 mt-8">
     <a routerLink="/details/1/edit">
