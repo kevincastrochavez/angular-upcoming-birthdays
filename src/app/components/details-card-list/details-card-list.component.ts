@@ -13,9 +13,13 @@ export class DetailsCardListComponent implements OnInit {
   @Input() friend: Friend;
   @Input() index: number;
 
+  id: string;
+
   faGift = faGift;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.id = this.friend._id;
+  }
 }
