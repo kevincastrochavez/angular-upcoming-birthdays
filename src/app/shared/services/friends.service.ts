@@ -9,6 +9,7 @@ import { Friend } from '../models/friend.model';
 export class FriendsService {
   uid = JSON.parse(window.localStorage.getItem('user')).uid;
   friends: Friend[] = [];
+  localDbUrl = 'http://localhost:3000/v1/friends';
 
   constructor(private http: HttpClient) {
     this.getFriends();
@@ -16,24 +17,26 @@ export class FriendsService {
 
   getFriends() {
     return this.http.get<Friend[]>(
-      `http://localhost:3000/v1/friends/${this.uid}`
+      `${this.localDbUrl}/${this.uid}`
       // `https://b-day-server.herokuapp.com/v1/friends/${this.uid}`
     );
   }
 
   getFriend(id: string) {
-    return this.http.get<Friend>(
-      `http://localhost:3000/v1/friends/${this.uid}/${id}`
-    );
+    return this.http.get<Friend>(`${this.localDbUrl}/${this.uid}/${id}`);
   }
 
   addFriend(newFriend: Friend) {
     if (!newFriend) return;
 
-    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
     this.http
-      .post<Friend>('http://localhost:3000/v1/friends', newFriend)
+      .post<Friend>(`${this.localDbUrl}`, newFriend)
+      .subscribe((friend) => this.friends.push(friend));
+  }
+
+  updateFriend(id: string, updatedFriend: Friend) {
+    this.http
+      .put<Friend>(`${this.localDbUrl}/${id}`, updatedFriend)
       .subscribe((friend) => this.friends.push(friend));
   }
 }

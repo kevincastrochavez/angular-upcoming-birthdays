@@ -25,6 +25,9 @@
 
 #details-small-img {
   margin-top: -15px;
+  width: 100%;
+  height: 30px;
+  object-fit: cover;
 }
 
 .day-count {

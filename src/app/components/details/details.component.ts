@@ -32,8 +32,6 @@ export class DetailsComponent implements OnInit {
       this.friend = friend;
 
       this.birthdateDay = Number(this.friend.birthdate);
-      console.log(this.birthdateDay);
-      console.log(this.currentDay);
 
       if (this.currentDay > this.birthdateDay) {
         this.countDown =

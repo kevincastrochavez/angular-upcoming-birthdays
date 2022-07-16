@@ -13,7 +13,7 @@
   <p
     class="col-start-2 col-end-3 row-start-2 row-end-3 text-xs self-end justify-self-center text-center"
   >
-    {{ friend.fullName }}
+    {{ friend.fullName | slice: 0:18 }}
   </p>
 
   <div class="row-start-4 row-end-5 col-start-2 col-end-3">

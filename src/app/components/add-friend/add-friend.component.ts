@@ -11,10 +11,10 @@ import { FriendsService } from 'src/app/shared/services/friends.service';
   styleUrls: ['./add-friend.component.css'],
 })
 export class AddFriendComponent implements OnInit {
+  @ViewChild('f') addFriendForm: NgForm;
   uid = JSON.parse(window.localStorage.getItem('user')).uid;
   currentYear = new Date().getFullYear();
 
-  @ViewChild('f') addFriendForm: NgForm;
   faChevronLeft = faChevronLeft;
   faPlus = faPlus;
   friend: Friend = {
@@ -54,6 +54,7 @@ export class AddFriendComponent implements OnInit {
     }
 
     this.friendsService.addFriend(this.friend);
-    console.log('Did send');
+
+    this.addFriendForm.reset();
   }
 }
