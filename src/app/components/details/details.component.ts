@@ -32,9 +32,18 @@ export class DetailsComponent implements OnInit {
       this.friend = friend;
 
       this.birthdateDay = Number(this.friend.birthdate);
-      this.countDown = Math.ceil(
-        (this.birthdateDay - this.currentDay) / 1000 / 3600 / 24
-      );
+      console.log(this.birthdateDay);
+      console.log(this.currentDay);
+
+      if (this.currentDay > this.birthdateDay) {
+        this.countDown =
+          Math.ceil((this.birthdateDay - this.currentDay) / 1000 / 3600 / 24) +
+          365;
+      } else {
+        this.countDown = Math.ceil(
+          (this.birthdateDay - this.currentDay) / 1000 / 3600 / 24
+        );
+      }
     });
   }
 }
