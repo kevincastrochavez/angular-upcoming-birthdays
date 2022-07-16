@@ -19,4 +19,10 @@ export class FriendsService {
       `https://b-day-server.herokuapp.com/v1/friends/${this.uid}`
     );
   }
+
+  getFriend(id: string) {
+    return this.http.get<Friend>(
+      `https://b-day-server.herokuapp.com/v1/friends/${this.uid}/${id}`
+    );
+  }
 }
