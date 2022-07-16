@@ -1,4 +1,4 @@
-<a routerLink="/details/1" id="details-card" class="w-full bg-white rounded-xl">
+<div id="details-card" class="w-full bg-white rounded-xl">
   <img
     [src]="friend.imgUrl"
     alt=""
@@ -22,7 +22,13 @@
       <span class="ml-1">Gift Idea</span>
     </div>
 
-    <p class="text-sm leading-4">{{ friend.giftIdea }}</p>
+    <p class="text-sm leading-4">
+      {{
+        friend.giftIdea.length > 18
+          ? (friend.giftIdea | slice: 0:18) + "..."
+          : friend.giftIdea
+      }}
+    </p>
   </div>
 
   <div class="row-start-4 row-end-5 col-start-4 col-end-6">
@@ -31,7 +37,13 @@
       <span class="ml-1">Favorite Snak</span>
     </div>
 
-    <p class="text-sm">{{ friend.favSnack }}</p>
+    <p class="text-sm leading-4">
+      {{
+        friend.favSnack.length > 40
+          ? (friend.favSnack | slice: 0:40) + "..."
+          : friend.favSnack
+      }}
+    </p>
   </div>
 
   <div class="row-start-6 row-end-7 col-start-2 col-end-6">
@@ -41,7 +53,6 @@
     </div>
 
     <p class="text-sm">
-      <!-- {{ friend.dreamDay | slice: 0:91 + "..." }} -->
       {{
         friend.dreamDay.length > 91
           ? (friend.dreamDay | slice: 0:91) + "..."
@@ -49,4 +60,4 @@
       }}
     </p>
   </div>
-</a>
+</div>
