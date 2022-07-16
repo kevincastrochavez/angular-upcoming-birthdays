@@ -41,7 +41,12 @@
     </div>
 
     <p class="text-sm">
-      {{ friend.dreamDay }}
+      <!-- {{ friend.dreamDay | slice: 0:91 + "..." }} -->
+      {{
+        friend.dreamDay.length > 91
+          ? (friend.dreamDay | slice: 0:91) + "..."
+          : friend.dreamDay
+      }}
     </p>
   </div>
 </a>
