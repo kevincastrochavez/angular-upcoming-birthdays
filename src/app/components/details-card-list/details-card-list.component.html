@@ -3,12 +3,12 @@
   class="bg-white w-full rounded-lg flex items-center"
   id="details-card-list"
 >
-  <img src="http://via.placeholder.com/100" alt="" class="rounded-full mr-5" />
+  <img [src]="friend.imgUrl" alt="" class="rounded-full mr-5" />
 
-  <h2 class="text-xs w-24">Kevin Castro</h2>
+  <h2 class="text-xs w-24">{{ friend.fullName }}</h2>
 
   <div class="short-date flex-1 text-end">
     <fa-icon [icon]="faGift" size="1x" class="mr-1"></fa-icon
-    ><span>March 23</span>
+    ><span>{{ birthdatesArray[index] }}</span>
   </div>
 </a>

@@ -9,6 +9,7 @@ import { Friend } from 'src/app/shared/models/friend.model';
 })
 export class DetailsCardSmallComponent implements OnInit {
   @Input() friend: Friend;
+
   id: string;
   currentDay = new Date().getTime();
   birthdateDay: number;

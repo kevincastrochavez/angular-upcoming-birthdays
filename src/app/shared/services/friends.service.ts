@@ -16,13 +16,14 @@ export class FriendsService {
 
   getFriends() {
     return this.http.get<Friend[]>(
-      `https://b-day-server.herokuapp.com/v1/friends/${this.uid}`
+      `http://localhost:3000/v1/friends/${this.uid}`
+      // `https://b-day-server.herokuapp.com/v1/friends/${this.uid}`
     );
   }
 
   getFriend(id: string) {
     return this.http.get<Friend>(
-      `https://b-day-server.herokuapp.com/v1/friends/${this.uid}/${id}`
+      `http://localhost:3000/v1/friends/${this.uid}/${id}`
     );
   }
 }
