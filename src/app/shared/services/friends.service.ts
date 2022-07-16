@@ -26,4 +26,14 @@ export class FriendsService {
       `http://localhost:3000/v1/friends/${this.uid}/${id}`
     );
   }
+
+  addFriend(newFriend: Friend) {
+    if (!newFriend) return;
+
+    // const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http
+      .post<Friend>('http://localhost:3000/v1/friends', newFriend)
+      .subscribe((friend) => this.friends.push(friend));
+  }
 }

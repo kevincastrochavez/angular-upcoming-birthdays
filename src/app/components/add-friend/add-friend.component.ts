@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-
 import { faChevronLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import { Friend } from 'src/app/shared/models/friend.model';
+import { FriendsService } from 'src/app/shared/services/friends.service';
 
 @Component({
   selector: 'app-add-friend',
@@ -27,7 +28,7 @@ export class AddFriendComponent implements OnInit {
     _id: '',
   };
 
-  constructor() {}
+  constructor(private friendsService: FriendsService) {}
 
   ngOnInit(): void {
     document
@@ -41,9 +42,8 @@ export class AddFriendComponent implements OnInit {
   onSubmit() {
     if (this.uid) {
       this.friend.fullName = this.addFriendForm.value.fullName;
-      this.friend.birthdate = new Date(
-        this.addFriendForm.value.birthdate
-      ).getTime();
+      this.friend.birthdate =
+        new Date(this.addFriendForm.value.birthdate).getTime() + 100000000;
       this.friend.imgUrl = `../../../assets/${this.addFriendForm.value.imgUrl}`;
       this.friend.favSnack = this.addFriendForm.value.favSnack;
       this.friend.giftIdea = this.addFriendForm.value.giftIdea;
@@ -52,5 +52,8 @@ export class AddFriendComponent implements OnInit {
     } else {
       console.log("There's no uid");
     }
+
+    this.friendsService.addFriend(this.friend);
+    console.log('Did send');
   }
 }
