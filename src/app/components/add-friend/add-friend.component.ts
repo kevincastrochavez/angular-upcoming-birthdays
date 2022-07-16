@@ -44,7 +44,7 @@ export class AddFriendComponent implements OnInit {
       this.friend.fullName = this.addFriendForm.value.fullName;
       this.friend.birthdate =
         new Date(this.addFriendForm.value.birthdate).getTime() + 100000000;
-      this.friend.imgUrl = `../../../assets/${this.addFriendForm.value.imgUrl}`;
+      this.friend.imgUrl = `../../../assets/${this.addFriendForm.value.imgUrl}.jpeg`;
       this.friend.favSnack = this.addFriendForm.value.favSnack;
       this.friend.giftIdea = this.addFriendForm.value.giftIdea;
       this.friend.dreamDay = this.addFriendForm.value.dreamDay;
