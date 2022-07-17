@@ -1,0 +1,67 @@
+<a
+  [routerLink]="['/details', id]"
+  id="spotlight-friend"
+  class="w-full bg-white rounded-xl"
+>
+  <img
+    [src]="nearestFriend.imgUrl"
+    alt=""
+    class="col-start-2 col-end-3 rounded-full"
+    id="spotlight-img"
+  />
+
+  <h2 class="col-start-4 col-end-6 row-start-2 row-end-3 text-lg leading-6">
+    Birthday coming up in <span class="day-count">{{ countDown }}</span> days
+  </h2>
+
+  <p
+    class="col-start-2 col-end-3 row-start-2 row-end-3 text-xs self-end justify-self-center text-center"
+  >
+    {{ nearestFriend.fullName | slice: 0:18 }}
+  </p>
+
+  <div class="row-start-4 row-end-5 col-start-2 col-end-3">
+    <div class="ideas-info">
+      <fa-icon [icon]="faGift" size="1x"></fa-icon>
+      <span class="ml-1">Gift Idea</span>
+    </div>
+
+    <p class="text-sm leading-4">
+      {{
+        nearestFriend.giftIdea.length > 18
+          ? (nearestFriend.giftIdea | slice: 0:18) + "..."
+          : nearestFriend.giftIdea
+      }}
+    </p>
+  </div>
+
+  <div class="row-start-4 row-end-5 col-start-4 col-end-6">
+    <div class="ideas-info">
+      <fa-icon [icon]="faCookieBite" size="1x"></fa-icon>
+      <span class="ml-1">Favorite Snak</span>
+    </div>
+
+    <p class="text-sm leading-4">
+      {{
+        nearestFriend.favSnack.length > 40
+          ? (nearestFriend.favSnack | slice: 0:40) + "..."
+          : nearestFriend.favSnack
+      }}
+    </p>
+  </div>
+
+  <div class="row-start-6 row-end-7 col-start-2 col-end-6">
+    <div class="ideas-info">
+      <fa-icon [icon]="faUmbrellaBeach" size="1x"></fa-icon>
+      <span class="ml-1">Dream Day Description</span>
+    </div>
+
+    <p class="text-sm">
+      {{
+        nearestFriend.dreamDay.length > 91
+          ? (nearestFriend.dreamDay | slice: 0:91) + "..."
+          : nearestFriend.dreamDay
+      }}
+    </p>
+  </div>
+</a>

@@ -25,6 +25,7 @@ import { DetailsCardListComponent } from './components/details-card-list/details
 import { AddFriendComponent } from './components/add-friend/add-friend.component';
 import { EditFriendComponent } from './components/edit-friend/edit-friend.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SpotlightFriendComponent } from './components/spotlight-friend/spotlight-friend.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { HttpClientModule } from '@angular/common/http';
     DetailsCardListComponent,
     AddFriendComponent,
     EditFriendComponent,
+    SpotlightFriendComponent,
   ],
   imports: [
     BrowserModule,
