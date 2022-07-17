@@ -15,6 +15,8 @@
     <a [routerLink]="['/details', id, 'edit']">
       <fa-icon [icon]="faPen" size="1x" class="mr-2"></fa-icon>Edit
     </a>
-    <a> <fa-icon [icon]="faTrash" size="1x" class="mr-2"></fa-icon>Delete </a>
+    <a (click)="onDelete()">
+      <fa-icon [icon]="faTrash" size="1x" class="mr-2"></fa-icon>Delete
+    </a>
   </div>
 </div>

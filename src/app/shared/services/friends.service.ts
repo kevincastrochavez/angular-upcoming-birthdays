@@ -39,4 +39,9 @@ export class FriendsService {
       .put<Friend>(`${this.localDbUrl}/${id}`, updatedFriend)
       .subscribe((friend) => this.friends.push(friend));
   }
+
+  deleteFriend(id: string) {
+    this.http.delete(`${this.localDbUrl}/${id}`);
+    console.log(`${this.localDbUrl}/${id}`);
+  }
 }

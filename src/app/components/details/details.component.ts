@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   faChevronLeft,
   faPen,
   faTrash,
 } from '@fortawesome/free-solid-svg-icons';
+
 import { Friend } from 'src/app/shared/models/friend.model';
 import { FriendsService } from 'src/app/shared/services/friends.service';
 
@@ -23,7 +25,11 @@ export class DetailsComponent implements OnInit {
   faPen = faPen;
   faTrash = faTrash;
 
-  constructor(private friendsService: FriendsService) {}
+  constructor(
+    private friendsService: FriendsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.id = window.location.href.split('/')[4];
@@ -43,5 +49,10 @@ export class DetailsComponent implements OnInit {
         );
       }
     });
+  }
+
+  onDelete() {
+    this.friendsService.deleteFriend(this.id);
+    this.router.navigate(['../../all'], { relativeTo: this.route });
   }
 }
