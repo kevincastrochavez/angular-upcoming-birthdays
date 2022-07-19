@@ -41,7 +41,11 @@ export class FriendsService {
   }
 
   deleteFriend(id: string) {
-    this.http.delete(`${this.localDbUrl}/${id}`);
+    this.http
+      .delete(`${this.localDbUrl}/${id}`)
+      .subscribe((friends: Friend[]) => {
+        this.friends = friends;
+      });
     console.log(`${this.localDbUrl}/${id}`);
   }
 }
