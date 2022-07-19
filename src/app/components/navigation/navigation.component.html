@@ -1,6 +1,7 @@
 <div
   class="w-full flex items-center bg-white sticky bottom-0 justify-around"
   id="nav"
+  *ngIf="this.uid"
 >
   <a class="flex" routerLink="/addFriend">
     <fa-icon [icon]="faUserPlus" size="1x"></fa-icon>

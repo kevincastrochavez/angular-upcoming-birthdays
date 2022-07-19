@@ -41,10 +41,10 @@ export class DetailsComponent implements OnInit {
 
       if (this.currentDay > this.birthdateDay) {
         this.countDown =
-          Math.ceil((this.birthdateDay - this.currentDay) / 1000 / 3600 / 24) +
+          Math.floor((this.birthdateDay - this.currentDay) / 1000 / 3600 / 24) +
           365;
       } else {
-        this.countDown = Math.ceil(
+        this.countDown = Math.floor(
           (this.birthdateDay - this.currentDay) / 1000 / 3600 / 24
         );
       }

@@ -7,9 +7,13 @@ import { faUserPlus, faUserGroup } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent implements OnInit {
+  uid: string;
+
   faUserPlus = faUserPlus;
   faUserGroup = faUserGroup;
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.uid = window.localStorage.getItem('user');
+  }
 }

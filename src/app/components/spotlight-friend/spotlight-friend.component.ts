@@ -39,7 +39,7 @@ export class SpotlightFriendComponent implements OnInit {
         this.id = this.nearestFriend._id;
 
         this.birthdateDay = Number(this.nearestFriend.birthdate);
-        this.countDown = Math.ceil(
+        this.countDown = Math.floor(
           (this.birthdateDay - this.todaysDate) / 1000 / 3600 / 24
         );
       },

@@ -24,7 +24,7 @@ export class DetailsCardSmallComponent implements OnInit {
     this.id = this.friend._id;
 
     this.birthdateDay = Number(this.friend.birthdate);
-    this.countDown = Math.ceil(
+    this.countDown = Math.floor(
       (this.birthdateDay - this.currentDay) / 1000 / 3600 / 24
     );
   }
