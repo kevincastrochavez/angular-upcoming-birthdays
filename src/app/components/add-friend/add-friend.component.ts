@@ -48,7 +48,6 @@ export class AddFriendComponent implements OnInit {
       this.friend.favSnack = this.addFriendForm.value.favSnack;
       this.friend.giftIdea = this.addFriendForm.value.giftIdea;
       this.friend.dreamDay = this.addFriendForm.value.dreamDay;
-      console.log(this.friend);
     } else {
       console.log("There's no uid");
     }

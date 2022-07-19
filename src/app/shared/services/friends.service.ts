@@ -46,6 +46,5 @@ export class FriendsService {
       .subscribe((friends: Friend[]) => {
         this.friends = friends;
       });
-    console.log(`${this.localDbUrl}/${id}`);
   }
 }
