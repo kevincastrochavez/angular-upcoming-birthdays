@@ -36,6 +36,8 @@ export class SpotlightFriendComponent implements OnInit {
           (friend) => Number(friend.birthdate) >= this.todaysDate
         );
 
+        console.log(this.nearestFriend);
+
         this.id = this.nearestFriend._id;
 
         this.birthdateDay = Number(this.nearestFriend.birthdate);

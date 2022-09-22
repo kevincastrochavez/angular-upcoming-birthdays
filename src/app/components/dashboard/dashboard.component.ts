@@ -27,11 +27,25 @@ export class DashboardComponent implements OnInit {
 
         this.friends.map((friend, index) => {
           if (Number(friend.birthdate) >= this.todaysDate) {
+            console.log(
+              `Friends birthdate: ${friend.birthdate}. Today's date: ${this.todaysDate}`
+            );
+
             if (this.next5Friends.length <= 5) {
               this.next5Friends.push(friend);
             }
           }
         });
+
+        const numberOfFriendsNextYear = 6 - this.next5Friends.length;
+        const friendsNextYear = this.friends.slice(0, numberOfFriendsNextYear);
+
+        if (this.next5Friends.length < 5) {
+          friendsNextYear.map((friend) => {
+            friend.birthdate += 31540000000;
+            this.next5Friends.push(friend);
+          });
+        }
 
         this.next5Friends.shift();
       },

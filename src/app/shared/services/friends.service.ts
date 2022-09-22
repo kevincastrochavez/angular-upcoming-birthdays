@@ -9,7 +9,8 @@ import { Friend } from '../models/friend.model';
 export class FriendsService {
   uid = JSON.parse(window.localStorage.getItem('user')).uid;
   friends: Friend[] = [];
-  localDbUrl = 'http://localhost:3000/v1/friends';
+  // localDbUrl = 'http://localhost:3000/v1/friends';
+  remoteDbUrl = 'https://b-day-server.herokuapp.com/v1/friends';
 
   constructor(private http: HttpClient) {
     this.getFriends();
@@ -17,32 +18,32 @@ export class FriendsService {
 
   getFriends() {
     return this.http.get<Friend[]>(
-      `${this.localDbUrl}/${this.uid}`
+      `${this.remoteDbUrl}/${this.uid}`
       // `https://b-day-server.herokuapp.com/v1/friends/${this.uid}`
     );
   }
 
   getFriend(id: string) {
-    return this.http.get<Friend>(`${this.localDbUrl}/${this.uid}/${id}`);
+    return this.http.get<Friend>(`${this.remoteDbUrl}/${this.uid}/${id}`);
   }
 
   addFriend(newFriend: Friend) {
     if (!newFriend) return;
 
     this.http
-      .post<Friend>(`${this.localDbUrl}`, newFriend)
+      .post<Friend>(`${this.remoteDbUrl}`, newFriend)
       .subscribe((friend) => this.friends.push(friend));
   }
 
   updateFriend(id: string, updatedFriend: Friend) {
     this.http
-      .put<Friend>(`${this.localDbUrl}/${id}`, updatedFriend)
+      .put<Friend>(`${this.remoteDbUrl}/${id}`, updatedFriend)
       .subscribe((friend) => this.friends.push(friend));
   }
 
   deleteFriend(id: string) {
     this.http
-      .delete(`${this.localDbUrl}/${id}`)
+      .delete(`${this.remoteDbUrl}/${id}`)
       .subscribe((friends: Friend[]) => {
         this.friends = friends;
       });
