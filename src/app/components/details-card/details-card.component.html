@@ -11,15 +11,15 @@
   </h2>
 
   <p
-    class="col-start-2 col-end-3 row-start-2 row-end-3 text-xs self-end justify-self-center text-center"
+    class="col-start-2 col-end-3 row-start-2 row-end-3 self-end justify-self-start text-sm text-start mb-2"
   >
     {{ friend.fullName | slice: 0:18 }}
   </p>
 
   <div class="row-start-4 row-end-5 col-start-2 col-end-3">
     <div class="ideas-info">
-      <fa-icon [icon]="faGift" size="1x"></fa-icon>
-      <span class="ml-1">Gift Idea</span>
+      <fa-icon [icon]="faGift" size="2x"></fa-icon>
+      <span class="ml-2 text-xs">Gift Idea</span>
     </div>
 
     <p class="text-sm leading-4">
@@ -34,7 +34,7 @@
   <div class="row-start-4 row-end-5 col-start-4 col-end-6">
     <div class="ideas-info">
       <fa-icon [icon]="faCookieBite" size="1x"></fa-icon>
-      <span class="ml-1">Favorite Snak</span>
+      <span class="ml-2 text-xs">Favorite Snak</span>
     </div>
 
     <p class="text-sm leading-4">
@@ -48,8 +48,8 @@
 
   <div class="row-start-6 row-end-7 col-start-2 col-end-6">
     <div class="ideas-info">
-      <fa-icon [icon]="faUmbrellaBeach" size="1x"></fa-icon>
-      <span class="ml-1">Dream Day Description</span>
+      <fa-icon [icon]="faUmbrellaBeach" size="2x"></fa-icon>
+      <span class="ml-2 text-xs">Dream Day Description</span>
     </div>
 
     <p class="text-sm break-words">
