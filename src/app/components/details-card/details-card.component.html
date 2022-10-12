@@ -52,10 +52,10 @@
       <span class="ml-1">Dream Day Description</span>
     </div>
 
-    <p class="text-sm">
+    <p class="text-sm break-words">
       {{
-        friend.dreamDay.length > 91
-          ? (friend.dreamDay | slice: 0:91) + "..."
+        friend.dreamDay.length > 75
+          ? (friend.dreamDay | slice: 0:75) + "..."
           : friend.dreamDay
       }}
     </p>

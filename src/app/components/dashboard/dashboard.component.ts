@@ -39,10 +39,11 @@ export class DashboardComponent implements OnInit {
 
         const numberOfFriendsNextYear = 6 - this.next5Friends.length;
         const friendsNextYear = this.friends.slice(0, numberOfFriendsNextYear);
+        const yearInMiliseconds = 31540000000;
 
         if (this.next5Friends.length < 5) {
           friendsNextYear.map((friend) => {
-            friend.birthdate += 31540000000;
+            friend.birthdate += yearInMiliseconds;
             this.next5Friends.push(friend);
           });
         }

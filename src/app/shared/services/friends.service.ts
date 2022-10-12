@@ -17,10 +17,7 @@ export class FriendsService {
   }
 
   getFriends() {
-    return this.http.get<Friend[]>(
-      `${this.remoteDbUrl}/${this.uid}`
-      // `https://b-day-server.herokuapp.com/v1/friends/${this.uid}`
-    );
+    return this.http.get<Friend[]>(`${this.remoteDbUrl}/${this.uid}`);
   }
 
   getFriend(id: string) {
