@@ -10,8 +10,7 @@
     0px 0.56875px 1.79219px rgba(12, 20, 33, 0.013), inset 0px 2px 1px #ffffff;
 
   display: grid;
-  grid-template-columns: 20px 100px 20px 1fr 1fr 20px;
-  /* grid-template-columns: 6.38vw 20.55vw 8.33vw 20.55vw 24.16vw 6.38vw; */
+  grid-template-columns: 20px 110px 20px 1fr 1fr 20px;
   grid-template-rows: 20px 55px 15px 60px 15px 60px 20px;
 }
 
