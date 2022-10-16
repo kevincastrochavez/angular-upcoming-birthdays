@@ -40,7 +40,11 @@ export class AuthService {
           displayName: res.user?.displayName,
         };
 
-        this.firestore.collection('users').add(userFirebase);
+        // this.firestore.collection('users').add(userFirebase);
+        this.firestore
+          .collection('users')
+          .doc(user.uid)
+          .set(userFirebase, { merge: true });
 
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
