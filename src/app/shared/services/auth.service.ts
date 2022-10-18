@@ -31,20 +31,14 @@ export class AuthService {
         const user = {
           uid: res.user?.uid,
           displayName: res.user?.displayName,
-          photoUrl: res.user?.photoUrl,
+          photoUrl: res.user?.photoURL,
           email: res.user?.email,
         };
 
-        const userFirebase = {
-          uid: res.user?.uid,
-          displayName: res.user?.displayName,
-        };
-
-        // this.firestore.collection('users').add(userFirebase);
         this.firestore
           .collection('users')
           .doc(user.uid)
-          .set(userFirebase, { merge: true });
+          .set(user, { merge: true });
 
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -70,7 +64,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['/login']);
     });
   }
 }

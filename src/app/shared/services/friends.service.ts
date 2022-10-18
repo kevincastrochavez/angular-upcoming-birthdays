@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { Friend } from '../models/friend.model';
 
@@ -12,7 +13,7 @@ export class FriendsService {
   // localDbUrl = 'http://localhost:3000/v1/friends';
   remoteDbUrl = 'https://b-day-server.herokuapp.com/v1/friends';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {
     this.getFriends();
   }
 
@@ -27,9 +28,15 @@ export class FriendsService {
   addFriend(newFriend: Friend) {
     if (!newFriend) return;
 
-    this.http
-      .post<Friend>(`${this.remoteDbUrl}`, newFriend)
-      .subscribe((friend) => this.friends.push(friend));
+    this.firestore
+      .collection('users')
+      .doc(this.uid)
+      .collection('friends')
+      .doc()
+      .set(newFriend);
+    // this.http
+    //   .post<Friend>(`${this.remoteDbUrl}`, newFriend)
+    //   .subscribe((friend) => this.friends.push(friend));
   }
 
   updateFriend(id: string, updatedFriend: Friend) {
