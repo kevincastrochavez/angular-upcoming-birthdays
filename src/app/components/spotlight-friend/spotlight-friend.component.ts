@@ -15,7 +15,7 @@ import { Friend } from 'src/app/shared/models/friend.model';
 })
 export class SpotlightFriendComponent implements OnInit {
   todaysDate: number = new Date().getTime();
-  friends: Friend[] = [];
+  friends: any = [];
   nearestFriend: Friend;
   birthdateDay: number;
   countDown: number;
@@ -29,17 +29,16 @@ export class SpotlightFriendComponent implements OnInit {
 
   ngOnInit(): void {
     this.friendsService.getFriends().subscribe(
-      (friends: Friend[]) => {
-        this.friends = friends;
+      (friends) => {
+        friends.docs.forEach((doc) =>
+          this.friends.push({ ...doc.data(), _id: doc.id })
+        );
 
         this.nearestFriend = this.friends.find(
           (friend) => Number(friend.birthdate) >= this.todaysDate
         );
-
-        console.log(this.nearestFriend);
-
+        // console.log(this.nearestFriend);
         this.id = this.nearestFriend._id;
-
         this.birthdateDay = Number(this.nearestFriend.birthdate);
         this.countDown = Math.floor(
           (this.birthdateDay - this.todaysDate) / 1000 / 3600 / 24

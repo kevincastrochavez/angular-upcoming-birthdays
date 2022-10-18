@@ -11,15 +11,19 @@ import { FriendsService } from '../../shared/services/friends.service';
 export class DashboardComponent implements OnInit {
   todaysDate: number = new Date().getTime();
   next5Friends: Friend[] = [];
-  friends: Friend[] = [];
+  friends: any = [];
   nearestFriend: Friend;
 
   constructor(private friendsService: FriendsService) {}
 
   ngOnInit(): void {
     this.friendsService.getFriends().subscribe(
-      (friends: Friend[]) => {
-        this.friends = friends;
+      (friends) => {
+        friends.docs.forEach((doc) =>
+          this.friends.push({ ...doc.data(), _id: doc.id })
+        );
+        // this.friends = friends;
+        console.log(this.friends);
 
         this.nearestFriend = this.friends.find(
           (friend) => Number(friend.birthdate) >= this.todaysDate
