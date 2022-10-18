@@ -21,7 +21,7 @@ export class FriendsService {
     return this.firestore
       .collection('users')
       .doc(this.uid)
-      .collection('friends')
+      .collection('friends', (doc) => doc.orderBy('birthdate'))
       .get();
     // return this.http.get<Friend[]>(`${this.remoteDbUrl}/${this.uid}`);
   }
