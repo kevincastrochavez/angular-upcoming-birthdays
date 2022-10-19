@@ -9,12 +9,11 @@ import { Friend } from '../models/friend.model';
 })
 export class FriendsService {
   uid = JSON.parse(window.localStorage.getItem('user')).uid;
-  friends: Friend[] = [];
   // localDbUrl = 'http://localhost:3000/v1/friends';
-  remoteDbUrl = 'https://b-day-server.herokuapp.com/v1/friends';
+  // remoteDbUrl = 'https://b-day-server.herokuapp.com/v1/friends';
   userDocument = this.firestore.collection('users').doc(this.uid);
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) {
+  constructor(private firestore: AngularFirestore) {
     this.getFriends();
   }
 
