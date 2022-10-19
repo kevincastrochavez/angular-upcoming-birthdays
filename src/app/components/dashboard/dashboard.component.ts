@@ -30,12 +30,6 @@ export class DashboardComponent implements OnInit {
 
         this.friends.map((friend, index) => {
           if (Number(friend.birthdate) >= this.todaysDate) {
-            // console.log(
-            //   `Friends birthdate: ${new Date(
-            //     friend.birthdate
-            //   )}. Today's date: ${new Date(this.todaysDate)}`
-            // );
-
             if (this.next5Friends.length <= 5) {
               this.next5Friends.push(friend);
             }
@@ -43,10 +37,8 @@ export class DashboardComponent implements OnInit {
         });
 
         const numberOfFriendsNextYear = 6 - this.next5Friends.length;
-        console.log(numberOfFriendsNextYear);
 
         const friendsNextYear = this.friends.slice(0, numberOfFriendsNextYear);
-        console.log(friendsNextYear);
         const YEAR_IN_MILISECONDS = 31540000000;
 
         if (this.next5Friends.length < 5) {
@@ -56,8 +48,8 @@ export class DashboardComponent implements OnInit {
               !this.next5Friends.includes(friend)
             ) {
               this.next5Friends.push(friend);
+              friend.birthdate += YEAR_IN_MILISECONDS;
             }
-            friend.birthdate += YEAR_IN_MILISECONDS;
           });
         }
 
