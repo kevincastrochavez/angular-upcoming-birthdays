@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { NgForm } from '@angular/forms';
 import { faChevronLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,6 +15,8 @@ export class AddFriendComponent implements OnInit {
   @ViewChild('f') addFriendForm: NgForm;
   uid = JSON.parse(window.localStorage.getItem('user')).uid;
   currentYear = new Date().getFullYear();
+  path: String;
+  imageName: String;
 
   faChevronLeft = faChevronLeft;
   faPlus = faPlus;
@@ -28,7 +31,10 @@ export class AddFriendComponent implements OnInit {
     _id: '',
   };
 
-  constructor(private friendsService: FriendsService) {}
+  constructor(
+    private friendsService: FriendsService,
+    private fireStorage: AngularFireStorage
+  ) {}
 
   ngOnInit(): void {
     document
@@ -39,12 +45,17 @@ export class AddFriendComponent implements OnInit {
       .setAttribute('max', this.currentYear + '-12-31');
   }
 
-  onSubmit() {
+  upload($event) {
+    this.path = $event.target.files[0];
+    this.imageName = $event.target.files[0].name;
+  }
+
+  async onSubmit() {
     if (this.uid) {
       this.friend.fullName = this.addFriendForm.value.fullName;
       this.friend.birthdate =
         new Date(this.addFriendForm.value.birthdate).getTime() + 100000000;
-      this.friend.imgUrl = `../../../assets/${this.addFriendForm.value.imgUrl}.jpeg`;
+      // this.friend.imgUrl = `../../../assets/${this.addFriendForm.value.imgUrl}.jpeg`;
       this.friend.favSnack = this.addFriendForm.value.favSnack;
       this.friend.giftIdea = this.addFriendForm.value.giftIdea;
       this.friend.dreamDay = this.addFriendForm.value.dreamDay;
@@ -52,8 +63,19 @@ export class AddFriendComponent implements OnInit {
       console.log("There's no uid");
     }
 
+    const fullImgName = `${this.uid}${this.imageName}`;
+
+    this.fireStorage.upload(fullImgName, this.path);
+    const storageRef = this.fireStorage.ref(fullImgName);
+
+    await storageRef.getDownloadURL().subscribe((donwloadUrl) => {
+      this.friend.imgUrl = donwloadUrl;
+    });
+
+    console.log(this.friend);
+
     this.friendsService.addFriend(this.friend);
 
-    this.addFriendForm.reset();
+    // this.addFriendForm.reset();
   }
 }

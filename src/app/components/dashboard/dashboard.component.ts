@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
         friends.docs.forEach((doc) =>
           this.friends.push({ ...doc.data(), _id: doc.id })
         );
-        // console.log(this.friends);
+        console.log(this.friends);
 
         this.nearestFriend = this.friends.find(
           (friend) => Number(friend.birthdate) >= this.todaysDate

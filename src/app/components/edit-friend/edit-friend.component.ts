@@ -1,11 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {
-  faChevronLeft,
-  faKipSign,
-  faPen,
-} from '@fortawesome/free-solid-svg-icons';
+import { faChevronLeft, faPen } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 
 import { Friend } from 'src/app/shared/models/friend.model';

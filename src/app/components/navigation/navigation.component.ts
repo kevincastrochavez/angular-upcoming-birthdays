@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { faUserPlus, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -14,6 +15,6 @@ export class NavigationComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.uid = window.localStorage.getItem('user');
+    this.uid = JSON.parse(window.localStorage.getItem('user')).uid;
   }
 }
