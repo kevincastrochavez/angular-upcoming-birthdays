@@ -27,7 +27,13 @@ export class FriendsService {
   }
 
   getFriend(id: string) {
-    return this.http.get<Friend>(`${this.remoteDbUrl}/${this.uid}/${id}`);
+    return this.firestore
+      .collection('users')
+      .doc(this.uid)
+      .collection('friends')
+      .doc(id)
+      .get();
+    // return this.http.get<Friend>(`${this.remoteDbUrl}/${this.uid}/${id}`);
   }
 
   addFriend(newFriend: Friend) {
