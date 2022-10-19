@@ -51,9 +51,15 @@ export class FriendsService {
   }
 
   updateFriend(id: string, updatedFriend: Friend) {
-    this.http
-      .put<Friend>(`${this.remoteDbUrl}/${id}`, updatedFriend)
-      .subscribe((friend) => this.friends.push(friend));
+    // this.http
+    //   .put<Friend>(`${this.remoteDbUrl}/${id}`, updatedFriend)
+    //   .subscribe((friend) => this.friends.push(friend));
+    this.firestore
+      .collection('users')
+      .doc(this.uid)
+      .collection('friends')
+      .doc(id)
+      .update(updatedFriend);
   }
 
   deleteFriend(id: string) {
