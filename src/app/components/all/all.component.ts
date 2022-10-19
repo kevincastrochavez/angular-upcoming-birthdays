@@ -11,7 +11,7 @@ import { FriendsService } from 'src/app/shared/services/friends.service';
   styleUrls: ['./all.component.css'],
 })
 export class AllComponent implements OnInit {
-  friends: Friend[] = [];
+  friends: any = [];
   birthdatesArray: string[];
 
   faChevronLeft = faChevronLeft;
@@ -19,12 +19,14 @@ export class AllComponent implements OnInit {
   constructor(private friendsService: FriendsService) {}
 
   ngOnInit(): void {
-    this.friendsService.getFriends().subscribe((friends: Friend[]) => {
-      this.friends = friends;
+    this.friendsService.getFriends().subscribe((friends) => {
+      friends.docs.forEach((doc) =>
+        this.friends.push({ ...doc.data(), _id: doc.id })
+      );
 
+      // this.friends = friends;
       this.birthdatesArray = this.friends.map((friend) => {
         const date = moment(Number(friend.birthdate)).format('MMMM DD');
-
         return date;
       });
     });

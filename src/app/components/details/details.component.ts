@@ -18,7 +18,7 @@ export class DetailsComponent implements OnInit {
   currentDay = new Date().getTime();
   birthdateDay: number;
   countDown: number;
-  friend: Friend;
+  friend;
   id: string;
 
   faChevronLeft = faChevronLeft;
@@ -34,8 +34,9 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = window.location.href.split('/')[4];
 
-    this.friendsService.getFriend(this.id).subscribe((friend: Friend) => {
-      this.friend = friend;
+    this.friendsService.getFriend(this.id).subscribe((friend) => {
+      this.friend = { ...friend.data(), _id: friend.id };
+      this.friend;
 
       this.birthdateDay = Number(this.friend.birthdate);
 

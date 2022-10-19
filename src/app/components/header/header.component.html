@@ -6,6 +6,7 @@
 
   <div
     id="logout"
+    *ngIf="user"
     class="flex-1 flex justify-end cursor-pointer"
     (click)="authService.SignOut()"
   >

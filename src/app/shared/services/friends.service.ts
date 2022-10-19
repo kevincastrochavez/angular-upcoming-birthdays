@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 import { Friend } from '../models/friend.model';
 
@@ -8,41 +9,35 @@ import { Friend } from '../models/friend.model';
 })
 export class FriendsService {
   uid = JSON.parse(window.localStorage.getItem('user')).uid;
-  friends: Friend[] = [];
   // localDbUrl = 'http://localhost:3000/v1/friends';
-  remoteDbUrl = 'https://b-day-server.herokuapp.com/v1/friends';
+  // remoteDbUrl = 'https://b-day-server.herokuapp.com/v1/friends';
+  userDocument = this.firestore.collection('users').doc(this.uid);
 
-  constructor(private http: HttpClient) {
+  constructor(private firestore: AngularFirestore) {
     this.getFriends();
   }
 
   getFriends() {
-    return this.http.get<Friend[]>(`${this.remoteDbUrl}/${this.uid}`);
+    return this.userDocument
+      .collection('friends', (doc) => doc.orderBy('birthdate'))
+      .get();
   }
 
   getFriend(id: string) {
-    return this.http.get<Friend>(`${this.remoteDbUrl}/${this.uid}/${id}`);
+    return this.userDocument.collection('friends').doc(id).get();
   }
 
   addFriend(newFriend: Friend) {
     if (!newFriend) return;
 
-    this.http
-      .post<Friend>(`${this.remoteDbUrl}`, newFriend)
-      .subscribe((friend) => this.friends.push(friend));
+    this.userDocument.collection('friends').doc().set(newFriend);
   }
 
   updateFriend(id: string, updatedFriend: Friend) {
-    this.http
-      .put<Friend>(`${this.remoteDbUrl}/${id}`, updatedFriend)
-      .subscribe((friend) => this.friends.push(friend));
+    this.userDocument.collection('friends').doc(id).update(updatedFriend);
   }
 
   deleteFriend(id: string) {
-    this.http
-      .delete(`${this.remoteDbUrl}/${id}`)
-      .subscribe((friends: Friend[]) => {
-        this.friends = friends;
-      });
+    this.userDocument.collection('friends').doc(id).delete();
   }
 }

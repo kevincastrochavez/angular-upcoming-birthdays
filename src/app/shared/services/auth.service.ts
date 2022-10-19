@@ -13,7 +13,8 @@ export class AuthService {
   constructor(
     public afs: AngularFirestore, // Injects Firestore service
     public afAuth: AngularFireAuth, // Injects Firebase auth service
-    public router: Router
+    public router: Router,
+    private firestore: AngularFirestore
   ) {}
 
   // Returns true when user is looged in
@@ -28,11 +29,16 @@ export class AuthService {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
         const user = {
-          uid: res.user.uid,
-          displayName: res.user.displayName,
-          photoUrl: res.user.photoUrl,
-          email: res.user.email,
+          uid: res.user?.uid,
+          displayName: res.user?.displayName,
+          photoUrl: res.user?.photoURL,
+          email: res.user?.email,
         };
+
+        this.firestore
+          .collection('users')
+          .doc(user.uid)
+          .set(user, { merge: true });
 
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -58,7 +64,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['/login']);
     });
   }
 }

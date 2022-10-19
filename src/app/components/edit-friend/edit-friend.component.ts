@@ -1,7 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faChevronLeft, faPen } from '@fortawesome/free-solid-svg-icons';
+import {
+  faChevronLeft,
+  faKipSign,
+  faPen,
+} from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 
 import { Friend } from 'src/app/shared/models/friend.model';
@@ -15,8 +19,8 @@ import { FriendsService } from 'src/app/shared/services/friends.service';
 export class EditFriendComponent implements OnInit {
   @ViewChild('f') updateFriendForm: NgForm;
   updatedFriend: Friend;
-  currentFriend: Friend;
-  friend: Friend;
+  currentFriend;
+  friend;
   id: string;
 
   faChevronLeft = faChevronLeft;
@@ -31,8 +35,8 @@ export class EditFriendComponent implements OnInit {
   ngOnInit(): void {
     this.id = window.location.href.split('/')[4];
 
-    this.friendsService.getFriend(this.id).subscribe((friend: Friend) => {
-      this.currentFriend = friend;
+    this.friendsService.getFriend(this.id).subscribe((friend) => {
+      this.currentFriend = { ...friend.data(), _id: friend.id };
 
       this.updatedFriend = {
         fullName: '',

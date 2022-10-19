@@ -14,8 +14,11 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class HeaderComponent implements OnInit {
   faCakeCandles = faCakeCandles;
   faRightFromBracket = faRightFromBracket;
+  user: boolean = false;
 
   constructor(public authService: AuthService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user = this.authService.isLoggedIn;
+  }
 }
