@@ -63,10 +63,16 @@ export class FriendsService {
   }
 
   deleteFriend(id: string) {
-    this.http
-      .delete(`${this.remoteDbUrl}/${id}`)
-      .subscribe((friends: Friend[]) => {
-        this.friends = friends;
-      });
+    this.firestore
+      .collection('users')
+      .doc(this.uid)
+      .collection('friends')
+      .doc(id)
+      .delete();
+    // this.http
+    //   .delete(`${this.remoteDbUrl}/${id}`)
+    //   .subscribe((friends: Friend[]) => {
+    //     this.friends = friends;
+    //   });
   }
 }

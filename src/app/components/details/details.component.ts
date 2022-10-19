@@ -36,6 +36,7 @@ export class DetailsComponent implements OnInit {
 
     this.friendsService.getFriend(this.id).subscribe((friend) => {
       this.friend = { ...friend.data(), _id: friend.id };
+      this.friend;
 
       this.birthdateDay = Number(this.friend.birthdate);
 
