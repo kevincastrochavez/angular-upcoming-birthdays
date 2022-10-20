@@ -65,17 +65,15 @@ export class AddFriendComponent implements OnInit {
 
     const fullImgName = `${this.uid}${this.imageName}`;
 
-    this.fireStorage.upload(fullImgName, this.path);
+    await this.fireStorage.upload(fullImgName, this.path);
     const storageRef = this.fireStorage.ref(fullImgName);
 
     await storageRef.getDownloadURL().subscribe((donwloadUrl) => {
       this.friend.imgUrl = donwloadUrl;
     });
 
-    console.log(this.friend);
-
     this.friendsService.addFriend(this.friend);
 
-    // this.addFriendForm.reset();
+    this.addFriendForm.reset();
   }
 }
