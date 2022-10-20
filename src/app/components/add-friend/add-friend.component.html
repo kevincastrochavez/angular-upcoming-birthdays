@@ -83,11 +83,16 @@
         required
       ></textarea>
     </div>
+
     <input [(ngModel)]="friend.uid" name="uid" type="text" id="uid" hidden />
+
     <label for="image">Image File</label>
     <input type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" />
+
     <button type="submit" class="mb-10">
-      <fa-icon [icon]="faPlus" size="1x" class="mr-2"></fa-icon>Add
+      <p *ngIf="!loading">
+        <fa-icon [icon]="faPlus" size="1x" class="mr-2"></fa-icon>Add
+      </p>
     </button>
   </form>
 </div>

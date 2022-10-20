@@ -30,7 +30,8 @@ export class FriendsService {
   addFriend(newFriend: Friend) {
     if (!newFriend) return;
 
-    this.userDocument.collection('friends').doc().set(newFriend);
+    const friend = this.userDocument.collection('friends').doc().set(newFriend);
+    return friend;
   }
 
   updateFriend(id: string, updatedFriend: Friend) {

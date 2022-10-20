@@ -17,6 +17,7 @@ export class AddFriendComponent implements OnInit {
   currentYear = new Date().getFullYear();
   path: String;
   imageName: String;
+  loading: boolean;
 
   faChevronLeft = faChevronLeft;
   faPlus = faPlus;
@@ -43,6 +44,7 @@ export class AddFriendComponent implements OnInit {
     document
       .getElementById('birthdate')
       .setAttribute('max', this.currentYear + '-12-31');
+    this.loading = false;
   }
 
   upload($event) {
@@ -51,11 +53,12 @@ export class AddFriendComponent implements OnInit {
   }
 
   async onSubmit() {
+    this.loading = true;
+
     if (this.uid) {
       this.friend.fullName = this.addFriendForm.value.fullName;
       this.friend.birthdate =
         new Date(this.addFriendForm.value.birthdate).getTime() + 100000000;
-      // this.friend.imgUrl = `../../../assets/${this.addFriendForm.value.imgUrl}.jpeg`;
       this.friend.favSnack = this.addFriendForm.value.favSnack;
       this.friend.giftIdea = this.addFriendForm.value.giftIdea;
       this.friend.dreamDay = this.addFriendForm.value.dreamDay;
@@ -66,13 +69,16 @@ export class AddFriendComponent implements OnInit {
     const fullImgName = `${this.uid}${this.imageName}`;
 
     await this.fireStorage.upload(fullImgName, this.path);
+
     const storageRef = this.fireStorage.ref(fullImgName);
 
     await storageRef.getDownloadURL().subscribe((donwloadUrl) => {
       this.friend.imgUrl = donwloadUrl;
     });
 
-    this.friendsService.addFriend(this.friend);
+    await this.friendsService
+      .addFriend(this.friend)
+      .then(() => (this.loading = false));
 
     this.addFriendForm.reset();
   }
