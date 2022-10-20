@@ -28,7 +28,7 @@ export class AddFriendComponent implements OnInit {
     favSnack: '',
     giftIdea: '',
     dreamDay: '',
-    uid: this.uid,
+    // uid: this.uid,
     _id: '',
   };
 

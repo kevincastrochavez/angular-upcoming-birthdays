@@ -6,7 +6,6 @@ export class Friend {
     public favSnack: string,
     public giftIdea: string,
     public dreamDay: string,
-    public uid: string,
     public _id: string
   ) {}
 }

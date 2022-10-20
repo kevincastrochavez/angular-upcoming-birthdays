@@ -46,7 +46,6 @@ export class EditFriendComponent implements OnInit {
         favSnack: '',
         giftIdea: '',
         dreamDay: '',
-        uid: this.currentFriend.uid,
         _id: this.currentFriend._id,
       };
 
@@ -62,12 +61,12 @@ export class EditFriendComponent implements OnInit {
     });
   }
 
-  async onSubmit() {
+  onSubmit() {
     this.loading = true;
 
     const storageRef = this.fireStorage.ref(this.friend._id);
 
-    await storageRef.getDownloadURL().subscribe((donwloadUrl) => {
+    storageRef.getDownloadURL().subscribe((donwloadUrl) => {
       this.updatedFriend.fullName = this.updateFriendForm.value.fullName;
       this.updatedFriend.birthdate =
         new Date(this.updateFriendForm.value.birthdate).getTime() + 100000000;
@@ -76,13 +75,9 @@ export class EditFriendComponent implements OnInit {
       this.updatedFriend.dreamDay = this.updateFriendForm.value.dreamDay;
       this.updatedFriend.imgUrl = donwloadUrl;
 
-      console.log(this.currentFriend._id);
-      console.log(this.id);
-      console.log(this.updatedFriend);
-
       this.friendsService.updateFriend(this.id, this.updatedFriend);
-    });
 
-    this.router.navigate(['../'], { relativeTo: this.route });
+      this.router.navigate(['../'], { relativeTo: this.route });
+    });
   }
 }
