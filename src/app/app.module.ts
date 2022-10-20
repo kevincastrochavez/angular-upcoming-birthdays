@@ -26,6 +26,7 @@ import { AddFriendComponent } from './components/add-friend/add-friend.component
 import { EditFriendComponent } from './components/edit-friend/edit-friend.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpotlightFriendComponent } from './components/spotlight-friend/spotlight-friend.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { SpotlightFriendComponent } from './components/spotlight-friend/spotligh
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
   ],

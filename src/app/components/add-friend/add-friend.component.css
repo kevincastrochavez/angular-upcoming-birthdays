@@ -68,3 +68,12 @@ form button {
   margin-left: auto;
   background-color: white;
 }
+
+.spinner {
+  transform: translate(-50%, 50%);
+}
+
+.overlay {
+  top: 90px;
+  background-color: rgba(0, 0, 0, 0.4);
+}

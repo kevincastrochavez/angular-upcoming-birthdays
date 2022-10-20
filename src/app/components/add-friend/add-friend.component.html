@@ -1,4 +1,10 @@
 <div id="addFriend">
+  <div *ngIf="loading" class="absolute h-full bottom-0 left-0 right-0 overlay">
+    <mat-spinner
+      color="warn"
+      class="absolute top-1/2 left-1/2 spinner"
+    ></mat-spinner>
+  </div>
   <a routerLink="../" class="bg-white rounded-lg mx-6"
     ><fa-icon [icon]="faChevronLeft" size="1x" class="mr-2"></fa-icon
     >Dashboard</a
@@ -90,9 +96,7 @@
     <input type="file" (change)="upload($event)" accept="*.png.jpg.jpeg" />
 
     <button type="submit" class="mb-10">
-      <p *ngIf="!loading">
-        <fa-icon [icon]="faPlus" size="1x" class="mr-2"></fa-icon>Add
-      </p>
+      <fa-icon [icon]="faPlus" size="1x" class="mr-2"></fa-icon>Add
     </button>
   </form>
 </div>
