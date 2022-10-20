@@ -52,8 +52,21 @@ export class AddFriendComponent implements OnInit {
     this.imageName = $event.target.files[0].name;
   }
 
+  generateRandomId() {
+    let result = '';
+    const characters =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < 21; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
   async onSubmit() {
     this.loading = true;
+    const randomId = this.generateRandomId();
 
     if (this.uid) {
       this.friend.fullName = this.addFriendForm.value.fullName;
@@ -62,11 +75,14 @@ export class AddFriendComponent implements OnInit {
       this.friend.favSnack = this.addFriendForm.value.favSnack;
       this.friend.giftIdea = this.addFriendForm.value.giftIdea;
       this.friend.dreamDay = this.addFriendForm.value.dreamDay;
+      this.friend._id = randomId;
     } else {
       console.log("There's no uid");
     }
 
-    const fullImgName = `${this.uid}${this.imageName}`;
+    console.log(this.friend);
+
+    const fullImgName = `${this.friend._id}`;
 
     await this.fireStorage.upload(fullImgName, this.path);
 
@@ -74,11 +90,11 @@ export class AddFriendComponent implements OnInit {
 
     await storageRef.getDownloadURL().subscribe((donwloadUrl) => {
       this.friend.imgUrl = donwloadUrl;
-    });
 
-    await this.friendsService
-      .addFriend(this.friend)
-      .then(() => (this.loading = false));
+      this.friendsService
+        .addFriend(this.friend, this.friend._id)
+        .then(() => (this.loading = false));
+    });
 
     this.addFriendForm.reset();
   }

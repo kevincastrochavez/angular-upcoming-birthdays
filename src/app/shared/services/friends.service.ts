@@ -27,10 +27,14 @@ export class FriendsService {
     return this.userDocument.collection('friends').doc(id).get();
   }
 
-  addFriend(newFriend: Friend) {
+  addFriend(newFriend: Friend, id) {
     if (!newFriend) return;
 
-    const friend = this.userDocument.collection('friends').doc().set(newFriend);
+    const friend = this.userDocument
+      .collection('friends')
+      .doc(id)
+      .set(newFriend);
+    // const friend = this.userDocument.collection('friends').doc().set(newFriend);
     return friend;
   }
 

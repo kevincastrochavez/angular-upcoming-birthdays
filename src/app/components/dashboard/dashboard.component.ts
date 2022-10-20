@@ -54,6 +54,7 @@ export class DashboardComponent implements OnInit {
         }
 
         this.next5Friends.shift();
+        console.log(this.next5Friends);
       },
       (error: any) => {
         console.log(error);
