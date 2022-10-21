@@ -8,7 +8,7 @@
     id="logout"
     *ngIf="user"
     class="flex-1 flex justify-end cursor-pointer"
-    (click)="authService.SignOut()"
+    (click)="signOut()"
   >
     <p class="text-base mr-1">Logout</p>
     <fa-icon [icon]="faRightFromBracket" size="6x"></fa-icon>
