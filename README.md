@@ -11,14 +11,14 @@ To start the application run ng serve on the terminal, and open up http://localh
 
 # Web Pages
 
-Basically the application has:
+Upcoming Birthdays has the following pages:
 
 - Login page: You can sign in with a Google account
 - Dashboard: Displays the nearest birthday among all your friends, along with a scrolling bar containing the next five birthdays coming up
 - Details: Contains information about the friend clicked
 - Edit Friend: Form to edit your friend
 - Add Friend: Form to add a new friend
-- All: List of all your friends, order by their birthday date
+- All: List of all your friends, ordered by their birthday date
 
 All routes, with the exception of the Login page, are protected by an authentication guard
 
@@ -59,7 +59,7 @@ Angular is a development platform, built on TypeScript. It includes:
 
 TODO
 
-- Onboarding modals to introduce users
+- Onboarding modals to introduce first-time users
 - Empty components when no friends have been added
 - Fix UI elements
 - Account for several use cases with date formatting
