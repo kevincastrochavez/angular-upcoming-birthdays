@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   faCakeCandles,
   faRightFromBracket,
@@ -16,9 +17,14 @@ export class HeaderComponent implements OnInit {
   faRightFromBracket = faRightFromBracket;
   user: boolean = false;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.user = this.authService.isLoggedIn;
+  }
+
+  signOut() {
+    this.authService.SignOut();
+    this.user = false;
   }
 }
