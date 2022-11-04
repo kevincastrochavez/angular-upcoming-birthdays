@@ -5,8 +5,6 @@ This is a web application that keeps track of your friends' birthday. It tells y
 The purpose of this application is to have a way to remember those people you care for, and show some love for them.
 To start the application run ng serve on the terminal, and open up http://localhost:4200 on your browser.
 
-{Provide a link to your YouTube demonstration. It should be a 4-5 minute demo of the software running (starting the server and navigating through the web pages) and a walkthrough of the code.}
-
 [Software Demo Video](https://www.youtube.com/watch?v=UcWl_ugSoTw)
 
 # Web Pages
